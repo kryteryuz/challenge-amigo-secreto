@@ -14,14 +14,14 @@ function agregarAmigo(){
     mostrarListaAmigos();
 }
 
-function mostrarListaAmigos() {
-    var listAmigos = document.querySelector('#listaAmigos');
-    
+var listAmigos = document.querySelector('#listaAmigos');
+
+function mostrarListaAmigos() {    
     // Asegurarse de que la variable 'amigos' esté definida y no esté vacía
     if (Array.isArray(amigos) && amigos.length > 0) {
         // Limpiar la lista antes de agregar nuevos elementos
-        listAmigos.innerHTML = "";
-        
+        limpiarListAmigos();
+
         // Crear el contenido de la lista
         let listaHTML = "";
         amigos.forEach((item) => {
@@ -34,6 +34,17 @@ function mostrarListaAmigos() {
         // Si la lista 'amigos' está vacía o no es un array válido
         listAmigos.innerHTML = "<li>No hay amigos para mostrar</li>";
     }
+}
+function limpiarListAmigos(){
+    listAmigos.innerHTML = "";
+}
+
+function sortearAmigo(){
+    listResultado = document.querySelector('#resultado');
+    let numeroAleatorio=Math.floor(Math.random()*amigos.length);
+    let amigoSorteado;
+    limpiarListAmigos();
+    listResultado.innerHTML = `<li>El amigo secreto sorteado es: ${amigos[numeroAleatorio]}</li>`;
 }
 
 //mostrarListaAmigos();
